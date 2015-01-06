@@ -24,5 +24,8 @@
         <testsuite name="SystemTests">
             <directory suffix=".php">system</directory>
         </testsuite>
+        <testsuite name="DriverTests">
+            <directory suffix=".php">Driver</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

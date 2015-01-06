@@ -8,11 +8,11 @@ class HelperTest extends CIUnit_TestCase
 {
     public function setUp()
     {
-        //$this->CI->load->helper('example');
+        $this->CI->load->helper('url');
     }
     
     public function testSampleFunction()
     {
-        //$this->assertEquals('Hi!', say('Hi!'));
+        $this->assertEquals('Hi!', "Hi!");
     }
 }

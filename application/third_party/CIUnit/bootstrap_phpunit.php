@@ -4,6 +4,22 @@ if ( ! defined('CIUnit_Version') ) {
 	define('CIUnit_Version', 0.17);
 }
 
+define("ENVIRONMENT", "testing");
+define('VIEWPATH', realpath(dirname(__FILE__) . "/../../views") . "/");
+// There's an ICONV_IMPL constant, but the PHP manual says that using
+// iconv's predefined constants is "strongly discouraged".
+if (extension_loaded('iconv'))
+{
+    define('ICONV_ENABLED', TRUE);
+    // iconv.internal_encoding is deprecated starting with PHP 5.6
+    // and it's usage triggers E_DEPRECATED messages.
+    @ini_set('iconv.internal_encoding', $charset);
+}
+else
+{
+    define('ICONV_ENABLED', FALSE);
+}
+
 /*
  *---------------------------------------------------------------
  * PHP ERROR REPORTING LEVEL
@@ -31,7 +47,7 @@ if ( ! defined('CIUnit_Version') ) {
  * is that the tests folder is in the same directory path as system.  If
  * it is not, update the paths appropriately.
  */
-    $system_path = dirname(__FILE__) . "/../../../system";
+    $system_path =  realpath(dirname(__FILE__)."/../../../vendor/codeigniter/framework/system/");
 
 /*
  *---------------------------------------------------------------
@@ -50,7 +66,7 @@ if ( ! defined('CIUnit_Version') ) {
  * is that the tests folder is in the same directory as the application
  * folder.  If it is not, update the path accordingly.
  */
-    $application_folder = dirname(__FILE__) . "/../..";
+    $application_folder = realpath(dirname(__FILE__)."/../../../application/");
 
 /**
  * --------------------------------------------------------------
@@ -73,7 +89,8 @@ if ( ! defined('CIUnit_Version') ) {
  *
  * This is the path to the tests folder.
  */
-    $tests_folder = dirname(__FILE__) . "/../../../tests";
+    $tests_folder = realpath($application_folder."/../tests/");
+
 
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
@@ -119,7 +136,6 @@ if ( ! defined('CIUnit_Version') ) {
     // Name of the "system folder"
     define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
-
     // The path to the "application" folder
     if (is_dir($application_folder))
     {
@@ -134,7 +150,6 @@ if ( ! defined('CIUnit_Version') ) {
 
         define('APPPATH', BASEPATH.$application_folder.'/');
     }
-    
     // The path to CIUnit
     if (is_dir($ciunit_folder))
     {
@@ -149,8 +164,7 @@ if ( ! defined('CIUnit_Version') ) {
         
         define ('CIUPATH', APPPATH . 'third_party/' . $ciunit_folder);
     }
-    
-    
+
     // The path to the Tests folder
     define('TESTSPATH', $tests_folder . '/');
 
@@ -164,7 +178,9 @@ if ( ! defined('CIUnit_Version') ) {
 require_once CIUPATH . 'core/CodeIgniter' . EXT;
 
 // Autoload the PHPUnit Framework
-require_once ('PHPUnit/Autoload.php');
+//require_once ('PHPUnit/Autoload.php');
+require_once realpath(dirname(__FILE__)."/../../../vendor/autoload.php");
 
 // Load the CIUnit Framework
 require_once CIUPATH. 'libraries/CIUnit.php';
+

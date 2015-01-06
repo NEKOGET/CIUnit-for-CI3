@@ -111,7 +111,7 @@
     $EXT =& load_class('Hooks', 'core');
 
     $GLOBALS['EXT'] =& $EXT;
-    
+
 /*
  * ------------------------------------------------------
  *  Verification call_hooks() method

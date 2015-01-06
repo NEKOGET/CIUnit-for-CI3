@@ -78,7 +78,6 @@ class Fixture {
 
         //security measure 2: only load if used database ends on '_test'
         $len = strlen($this->CI->db->database);
-
         if ( substr($this->CI->db->database, $len-5, $len) != '_test' )
         {
             die("\nSorry, the name of your test database must end on '_test'.\n".
