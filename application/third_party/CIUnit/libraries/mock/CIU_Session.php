@@ -76,7 +76,7 @@ class CIU_Session
 	public function sess_destroy()
 	{
 		// Just call destroy on driver
-		$this->current->sess_destroy();
+		$this->userdata = array();
 	}
 
 	/**
