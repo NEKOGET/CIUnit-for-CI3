@@ -47,7 +47,7 @@ else
  * is that the tests folder is in the same directory path as system.  If
  * it is not, update the paths appropriately.
  */
-    $system_path =  realpath(dirname(__FILE__)."/../../../vendor/codeigniter/framework/system/");
+    $system_path =  realpath(dirname(__FILE__)."/../../../system/");
 
 /*
  *---------------------------------------------------------------
@@ -89,7 +89,7 @@ else
  *
  * This is the path to the tests folder.
  */
-    $tests_folder = realpath($application_folder."/../tests/");
+    $tests_folder = realpath($application_folder."/tests/");
 
 
 // --------------------------------------------------------------------
@@ -179,7 +179,7 @@ require_once CIUPATH . 'core/CodeIgniter' . EXT;
 
 // Autoload the PHPUnit Framework
 //require_once ('PHPUnit/Autoload.php');
-require_once realpath(dirname(__FILE__)."/../../../vendor/autoload.php");
+//require_once realpath(dirname(__FILE__)."/../../../vendor/autoload.php");
 
 // Load the CIUnit Framework
 require_once CIUPATH. 'libraries/CIUnit.php';
