@@ -4,7 +4,7 @@
  * @group Controller
  */
 
-class SomeControllerTest extends CIUnit_TestCase
+class Welcome_Test extends CIUnit_TestCase
 {
     public function setUp()
     {
