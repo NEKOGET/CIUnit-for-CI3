@@ -40,14 +40,14 @@ else
  * This variable must contain the name of your "system" folder.
  * Include the path if the folder is not in the same  directory
  * as this file.
- * 
+ *
  * NO TRAILING SLASH!
- * 
+ *
  * The test should be run from inside the tests folder.  The assumption
  * is that the tests folder is in the same directory path as system.  If
  * it is not, update the paths appropriately.
  */
-    $system_path =  realpath(dirname(__FILE__)."/../../../system/");
+    $system_path =  realpath(dirname(__FILE__)."/../../../vendor/codeigniter/framework/system/");
 
 /*
  *---------------------------------------------------------------
@@ -61,7 +61,7 @@ else
  * http://codeigniter.com/user_guide/general/managing_apps.html
  *
  * NO TRAILING SLASH!
- * 
+ *
  * The tests should be run from inside the tests folder.  The assumption
  * is that the tests folder is in the same directory as the application
  * folder.  If it is not, update the path accordingly.
@@ -72,7 +72,7 @@ else
  * --------------------------------------------------------------
  * CIUNIT FOLDER NAME
  * --------------------------------------------------------------
- * 
+ *
  * Typically this folder will be within the application's third-party
  * folder.  However, you can place the folder in any directory.  Just
  * be sure to update this path.
@@ -81,7 +81,7 @@ else
  *
  */
     $ciunit_folder = dirname(__FILE__);
- 
+
 /**
  * --------------------------------------------------------------
  * UNIT TESTS FOLDER NAME
@@ -89,7 +89,7 @@ else
  *
  * This is the path to the tests folder.
  */
-    $tests_folder = realpath($application_folder."/tests/");
+    $tests_folder = realpath($application_folder."/../tests/");
 
 
 // --------------------------------------------------------------------
@@ -109,7 +109,7 @@ else
 
     // ensure there's a trailing slash
     $system_path = rtrim($system_path, '/').'/';
-    
+
     // Is the system path correct?
     if ( ! is_dir($system_path))
     {
@@ -161,7 +161,7 @@ else
         {
             exit("Your CIUnit folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF);
         }
-        
+
         define ('CIUPATH', APPPATH . 'third_party/' . $ciunit_folder);
     }
 
@@ -179,8 +179,7 @@ require_once CIUPATH . 'core/CodeIgniter' . EXT;
 
 // Autoload the PHPUnit Framework
 //require_once ('PHPUnit/Autoload.php');
-//require_once realpath(dirname(__FILE__)."/../../../vendor/autoload.php");
+require_once realpath(dirname(__FILE__)."/../../../vendor/autoload.php");
 
 // Load the CIUnit Framework
 require_once CIUPATH. 'libraries/CIUnit.php';
-
